@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bmuwengyl4oxm"]
+
+[ext_resource type="PackedScene" uid="uid://byph5knwx6feb" path="res://scenes/bat.tscn" id="1_3wj70"]
+
+[node name="Default_scene 3D" type="Node3D"]
+
+[node name="Bat" parent="." instance=ExtResource("1_3wj70")]
