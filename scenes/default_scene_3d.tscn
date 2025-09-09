@@ -1,7 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://bmuwengyl4oxm"]
+[gd_scene load_steps=3 format=3 uid="uid://bmuwengyl4oxm"]
 
 [ext_resource type="PackedScene" uid="uid://byph5knwx6feb" path="res://scenes/bat.tscn" id="1_3wj70"]
+[ext_resource type="PackedScene" uid="uid://c6hh3u7jqyelf" path="res://scenes/arena.tscn" id="2_0yxdv"]
 
 [node name="Default_scene 3D" type="Node3D"]
 
 [node name="Bat" parent="." instance=ExtResource("1_3wj70")]
+
+[node name="Arena" parent="." instance=ExtResource("2_0yxdv")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)

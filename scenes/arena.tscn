@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6hh3u7jqyelf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ug7gw"]
+
+[node name="Arena" type="Node3D"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0)
+flip_faces = true
+material = SubResource("ShaderMaterial_ug7gw")
