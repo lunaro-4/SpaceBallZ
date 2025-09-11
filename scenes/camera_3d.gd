@@ -17,9 +17,15 @@ func _unhandled_input(event: InputEvent) -> void:
 	var is_camera_moved := (
 		event is InputEventMouseMotion and
 		Input.mouse_mode == Input.MOUSE_MODE_CAPTURED)
-
 	if is_camera_moved:
 		_camera_direction = event.screen_relative * mouse_sence
+	
+	
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	else:
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	
 
 func _process_camera_rotation(delta: float) -> void:
 	self.rotation.x -= _camera_direction.y * delta
@@ -32,7 +38,8 @@ func _process_camera_move(delta: float) -> void:
 	var forward := self.global_basis.z
 	var right := self.global_basis.x
 	var move_direction := forward * movement_input.y + right * movement_input.x
-	linear_velocity = linear_velocity.move_toward(move_direction * move_speed, acceleration * delta)
+	if move_direction:
+		position = position.move_toward(move_direction * move_speed, acceleration * delta)
 
 
 func _physics_process(delta: float) -> void:
