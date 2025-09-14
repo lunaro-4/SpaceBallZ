@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://u33w8gk7atac"]
+
+[ext_resource type="Texture2D" uid="uid://cafaosik2aym7" path="res://icon.svg" id="1_3vyb7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cnldk"]
+size = Vector3(1, 1, 0.0869141)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f0re4"]
+
+[node name="Player" type="CharacterBody3D"]
+axis_lock_linear_z = true
+
+[node name="Bat" type="CharacterBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bat"]
+shape = SubResource("BoxShape3D_cnldk")
+
+[node name="Sprite3D" type="Sprite3D" parent="Bat/CollisionShape3D"]
+texture = ExtResource("1_3vyb7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_f0re4")
+disabled = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+current = true

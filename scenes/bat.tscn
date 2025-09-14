@@ -5,7 +5,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_cnldk"]
 size = Vector3(1, 1, 0.0869141)
 
-[node name="Bat" type="Node3D"]
+[node name="Bat" type="CharacterBody3D"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_cnldk")
