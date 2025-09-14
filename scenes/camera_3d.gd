@@ -14,6 +14,7 @@ func _ready() -> void:
 var _camera_direction :=  Vector2.ZERO
 
 func _unhandled_input(event: InputEvent) -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	var is_camera_moved := (
 		event is InputEventMouseMotion and
 		Input.mouse_mode == Input.MOUSE_MODE_CAPTURED)
