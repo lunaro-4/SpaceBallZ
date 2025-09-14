@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 project/assembly_name="SpaceBallZ"
 
+[editor_plugins]
+
+enabled=PackedStringArray()
+
 [input]
 
 Up={
@@ -51,9 +55,15 @@ Mouse_LMB={
 ]
 }
 
+[layer_names]
+
+3d_physics/layer_3="Walls"
+3d_physics/layer_4="Ball"
+
 [physics]
 
 3d/run_on_separate_thread=true
+3d/default_linear_damp=0.0
 
 [rendering]
 

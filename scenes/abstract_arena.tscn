@@ -1,6 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://be82ywiel2vd2"]
+[gd_scene load_steps=8 format=3 uid="uid://be82ywiel2vd2"]
 
 [ext_resource type="Texture2D" uid="uid://cafaosik2aym7" path="res://icon.svg" id="1_dhkka"]
+[ext_resource type="Script" uid="uid://cxmc0h2wmktf2" path="res://scenes/abstract_arena.gd" id="1_xocu3"]
+[ext_resource type="Script" uid="uid://ck0rn1kbqs8ph" path="res://scenes/wall_collider.gd" id="3_xln6f"]
 
 [sub_resource type="FogMaterial" id="FogMaterial_dhkka"]
 
@@ -14,7 +16,10 @@ size = Vector3(1.5, 0.261, 2.5)
 [sub_resource type="BoxShape3D" id="BoxShape3D_xln6f"]
 size = Vector3(1.50226, 0.261, 1.49998)
 
-[node name="Arena" type="Node3D"]
+[node name="Arena" type="Node3D" node_paths=PackedStringArray("scoring_surface_team_1", "scoring_surface_team_2")]
+script = ExtResource("1_xocu3")
+scoring_surface_team_1 = [NodePath("Area3D2")]
+scoring_surface_team_2 = [NodePath("Area3D")]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0)
@@ -23,36 +28,62 @@ material = SubResource("StandardMaterial3D_olpmc")
 
 [node name="LongCollision" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.64, 0)
+collision_layer = 5
+collision_mask = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LongCollision"]
 shape = SubResource("BoxShape3D_xocu3")
 
 [node name="LongCollision2" type="StaticBody3D" parent="."]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.62, 0.02, 0)
+collision_layer = 5
+collision_mask = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LongCollision2"]
 shape = SubResource("BoxShape3D_xocu3")
 
 [node name="LongCollision3" type="StaticBody3D" parent="."]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.62, 0.02, 0)
+collision_layer = 5
+collision_mask = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LongCollision3"]
 shape = SubResource("BoxShape3D_xocu3")
 
 [node name="LongCollision4" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6, 0)
+collision_layer = 5
+collision_mask = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LongCollision4"]
 shape = SubResource("BoxShape3D_xocu3")
 
 [node name="SquareCollision" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.000374049, 0.0230992, 1.11847)
+collision_layer = 5
+collision_mask = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SquareCollision"]
 shape = SubResource("BoxShape3D_xln6f")
 
 [node name="SquareCollision2" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.000374049, 0.0230992, -1.11498)
+collision_layer = 5
+collision_mask = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SquareCollision2"]
+shape = SubResource("BoxShape3D_xln6f")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -1)
+script = ExtResource("3_xln6f")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_xln6f")
+
+[node name="Area3D2" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 1)
+script = ExtResource("3_xln6f")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D2"]
 shape = SubResource("BoxShape3D_xln6f")
