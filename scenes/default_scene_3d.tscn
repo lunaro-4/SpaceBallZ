@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://n0v5fkhstlbp" path="res://scenes/shoot_point.gd" id="5_arvg4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f0re4"]
-size = Vector3(0.5, 0.5, 0.5)
+size = Vector3(1, 1, 0.5)
 
 [node name="Default_scene 3D" type="Node3D"]
 
@@ -20,13 +20,17 @@ gravity_scale = 0.0
 
 [node name="Camera3D" type="Camera3D" parent="Arena/CameraMan"]
 
-[node name="Player" type="CharacterBody3D" parent="Arena"]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0.816598)
+[node name="Player" type="RigidBody3D" parent="Arena"]
+transform = Transform3D(0.999995, 0.0032114, 0, -0.0032114, 0.999995, 0, 0, 0, 1, 0, 0, 0.816598)
 collision_layer = 0
 collision_mask = 4
-motion_mode = 1
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+gravity_scale = 0.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Arena/Player"]
+transform = Transform3D(0.105, -4.88944e-11, 0, 4.88944e-11, 0.105, 0, 0, 0, 0.105, 0, 0, 0)
 shape = SubResource("BoxShape3D_f0re4")
 
 [node name="Camera3D" type="Camera3D" parent="Arena/Player"]
@@ -34,14 +38,14 @@ current = true
 fov = 103.8
 
 [node name="Bat" parent="Arena/Player" instance=ExtResource("1_3wj70")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, -0.148182)
+transform = Transform3D(0.185, 0, 0, 0, 0.185, 0, 0, 0, 0.185, 0, 0, -0.01)
 visible = false
 collision_layer = 8
 motion_mode = 1
 
 [node name="Controls" type="Node" parent="Arena/Player"]
 script = ExtResource("3_f0re4")
-move_speed = 1.0
+move_speed = 10.0
 acceleration = 1.0
 mouse_sence = 1.0
 
