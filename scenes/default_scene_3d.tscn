@@ -57,7 +57,35 @@ max_x_deviation = 180.0
 manager = NodePath("../Manager")
 initial_speed = 0.1
 
-[node name="Manager" type="Node" parent="." node_paths=PackedStringArray("arena", "shoot_point")]
+[node name="Manager" type="Node" parent="." node_paths=PackedStringArray("arena", "shoot_point", "team_1_score_label", "team_2_score_label")]
 script = ExtResource("5_3jja6")
 arena = NodePath("../Arena")
 shoot_point = NodePath("../ShootPoint")
+team_1_score_label = NodePath("../Control/PanelContainer/HBoxContainer/TeamOneScore")
+team_2_score_label = NodePath("../Control/PanelContainer/HBoxContainer/TeamTwoScore")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PanelContainer" type="PanelContainer" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/PanelContainer"]
+layout_mode = 2
+
+[node name="TeamOneScore" type="Label" parent="Control/PanelContainer/HBoxContainer"]
+layout_mode = 2
+text = "0"
+
+[node name="Centre" type="Label" parent="Control/PanelContainer/HBoxContainer"]
+layout_mode = 2
+text = ":"
+
+[node name="TeamTwoScore" type="Label" parent="Control/PanelContainer/HBoxContainer"]
+layout_mode = 2
+text = "0"

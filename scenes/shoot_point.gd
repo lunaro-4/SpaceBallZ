@@ -26,7 +26,6 @@ func spawn_ball() -> void:
 	ball_instance.linear_velocity = _get_rand_vector()
 	ball_instance.speed = initial_speed
 	get_parent().add_child.call_deferred(ball_instance)
-	print("ball_spawned")
 	ball_spawned.emit(ball_instance)
 
 
