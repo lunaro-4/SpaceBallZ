@@ -52,3 +52,5 @@ func _set_scoring_ball(ball: Ball) -> void:
 
 func bounced(_body) -> void:
 	print("Bounced!")
+
+

@@ -3,14 +3,17 @@ extends Node
 @export var move_speed : float = 0
 @export var acceleration : float = 0
 
+
 @export_range(0,10) var mouse_sence := 0.0
 
 
 @onready var _controlled_body : PhysicsBody3D = self.get_parent()
 
 
+
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
 
 
 
