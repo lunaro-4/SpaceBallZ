@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bmuwengyl4oxm"]
+[gd_scene load_steps=8 format=3 uid="uid://bmuwengyl4oxm"]
 
 [ext_resource type="PackedScene" uid="uid://byph5knwx6feb" path="res://scenes/bat.tscn" id="1_3wj70"]
 [ext_resource type="PackedScene" uid="uid://be82ywiel2vd2" path="res://scenes/abstract_arena.tscn" id="1_mc1mh"]
 [ext_resource type="Script" uid="uid://dndhayjur27tj" path="res://components/controls_camera_fixed.gd" id="3_f0re4"]
+[ext_resource type="Texture2D" uid="uid://dkkp54e4cw07x" path="res://chara.png" id="4_arvg4"]
 [ext_resource type="Script" uid="uid://r1ykrf4v7fcv" path="res://components/manager.gd" id="5_3jja6"]
 [ext_resource type="Script" uid="uid://n0v5fkhstlbp" path="res://scenes/shoot_point.gd" id="5_arvg4"]
 
@@ -12,10 +13,11 @@ size = Vector3(0.5, 0.5, 0.5)
 [node name="Default_scene 3D" type="Node3D"]
 
 [node name="Arena" parent="." instance=ExtResource("1_mc1mh")]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 20, 0, 0, 0)
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 20, 0.0321064, -0.01913774, -0.118852615)
 
 [node name="CameraMan" type="RigidBody3D" parent="Arena"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+visible = false
 gravity_scale = 0.0
 
 [node name="Camera3D" type="Camera3D" parent="Arena/CameraMan"]
@@ -30,20 +32,26 @@ motion_mode = 1
 shape = SubResource("BoxShape3D_f0re4")
 
 [node name="Camera3D" type="Camera3D" parent="Arena/Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0.72302437, 0.15378475)
 current = true
 fov = 103.8
 
 [node name="Bat" parent="Arena/Player" instance=ExtResource("1_3wj70")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, -0.148182)
-visible = false
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -1.0514536)
 collision_layer = 8
 motion_mode = 1
 
 [node name="Controls" type="Node" parent="Arena/Player"]
 script = ExtResource("3_f0re4")
-move_speed = 1.0
+move_speed = 0.25
 acceleration = 1.0
 mouse_sence = 1.0
+hitbox_node = NodePath("../Bat")
+hitbox_offset_speed = 10.0
+
+[node name="Sprite chara" type="Sprite3D" parent="Arena/Player"]
+transform = Transform3D(0.495, 0, 0, 0, 0.495, 0, 0, 0, 0.495, 0, 0, 0.30491066)
+texture = ExtResource("4_arvg4")
 
 [node name="ShootPoint" type="Marker3D" parent="." node_paths=PackedStringArray("manager")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.5221)
@@ -51,7 +59,7 @@ script = ExtResource("5_arvg4")
 max_y_deviation = 180.0
 max_x_deviation = 180.0
 manager = NodePath("../Manager")
-initial_speed = 0.1
+initial_speed = 0.2
 
 [node name="Manager" type="Node" parent="." node_paths=PackedStringArray("arena", "shoot_point")]
 script = ExtResource("5_3jja6")
